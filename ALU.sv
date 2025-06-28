@@ -11,8 +11,8 @@ module ALU (Result_o, zero_o, overflow_o, carryout_o, negative_o, ALUControl_i, 
     output  logic                               negative_o;
 
     input   logic [ALU_CONTROL_LENGTH - 1 : 0]  ALUControl_i;
-    input   logic [REGISTER_LENGTH - 1 : 0]     ALUControl_i;
-    input   logic [REGISTER_LENGTH - 1 : 0]     ALUControl_i;
+    input   logic [REGISTER_LENGTH - 1 : 0]     A_i;
+    input   logic [REGISTER_LENGTH - 1 : 0]     B_i;
 
 endmodule
 
