@@ -1,4 +1,4 @@
-#define MODULENAME RegisterFile
+#define MODULENAME zero_checker
 
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
@@ -30,42 +30,10 @@ int main(int argc, char** argv) {
     contextp->commandArgs(argc, argv);
     module* top = new module{contextp};
     
-    
-    std::cout << "[ASSERTION #1]: Attempting to overwrite register 31 (should always be 0)" << std::endl;
-    top->RR1_i = 31;
-    top->RR2_i = 31;
-    top->WR_i = 31;
-    top->WD_i = 0x000000000000A0;
-    clk_tick(top);
-    top->RegWrite_i = 1;
-    clk_tick(top);
-    top->RegWrite_i = 0;
-    clk_tick(top);
-    assert(top->RD1_o == 0 && top->RD2_o == 0);
+    top->in_i = 01;
+    top->eval();
 
-    std::cout << "[ASSERTION #2]: Writing & Validating each Registers" << std::endl;
-    for (int i = 0; i < 31; i++) {
-        top->RegWrite_i = 0;
-        top->RR1_i = i - 1;
-        top->RR2_i = i;
-        top->WR_i = i;
-        top->WD_i = -1;
-        clk_tick(top);
-        top->RegWrite_i = 1;
-        top->WD_i = i;
-        clk_tick(top);
-    } 
-    for (int i = 0; i < 31; i++) {
-        top->RegWrite_i = 0;
-        top->RR1_i = i - 1;
-        top->RR2_i = i;
-        top->WR_i = i;
-        top->WD_i = -2;
-        clk_tick(top);
-        assert((i == 0 && top->RD1_o == 0) || top->RD1_o == i - 1);
-        assert((i == 31 && top->RD2_o == 0) || top->RD2_o == i);
-    } 
-    
+    std::cout << std::bitset<1>(top->flag_o) << std::endl;
 
     top->final();
     delete top;
@@ -74,8 +42,8 @@ int main(int argc, char** argv) {
 }
 
 void clk_tick(module* top) {
-    top->clk_i = 1;
-    top->eval();
-    top->clk_i = 0;
-    top->eval();
+    // top->clk_i = 1;
+    // top->eval();
+    // top->clk_i = 0;
+    // top->eval();
 }
