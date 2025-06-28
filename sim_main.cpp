@@ -1,4 +1,4 @@
-#define MODULENAME zero_checker
+#define MODULENAME AND_N
 
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
@@ -30,10 +30,10 @@ int main(int argc, char** argv) {
     contextp->commandArgs(argc, argv);
     module* top = new module{contextp};
     
-    top->in_i = 01;
+    top->in_i = 0xFFFFFFFFFFFFFFFF;
     top->eval();
 
-    std::cout << std::bitset<1>(top->flag_o) << std::endl;
+    std::cout << std::bitset<1>(top->out_o) << std::endl;
 
     top->final();
     delete top;
