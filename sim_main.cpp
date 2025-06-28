@@ -1,4 +1,4 @@
-#define MODULENAME OR_N
+#define MODULENAME XOR_N
 
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     contextp->commandArgs(argc, argv);
     module* top = new module{contextp};
     
-    top->in_i = 0x0000000000000001;
+    top->in_i = 0x0000000000000005;
     top->eval();
 
     std::cout << std::bitset<1>(top->out_o) << std::endl;
