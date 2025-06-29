@@ -1,4 +1,4 @@
-#define MODULENAME XOR_N
+#define MODULENAME Full_Adder_N
 
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
@@ -30,10 +30,18 @@ int main(int argc, char** argv) {
     contextp->commandArgs(argc, argv);
     module* top = new module{contextp};
     
-    top->in_i = 0x0000000000000005;
+    top->A_i = 16;
+    top->B_i = 16;
+    top->C_in_i = 0;
+    
     top->eval();
-
-    std::cout << std::bitset<1>(top->out_o) << std::endl;
+        
+    
+    std::cout << "[A]: " << top->A_i << std::endl;
+    std::cout << "[B]: " << top->B_i << std::endl;
+    
+    std::cout << "[S]: " << top->S_o << std::endl;
+    std::cout << "[C]: " << std::bitset<64>(top->C_out_o) << std::endl;
 
     top->final();
     delete top;
