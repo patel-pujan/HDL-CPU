@@ -1,4 +1,6 @@
 // 1 bit Full Adder
+`timescale 1ns/10ps
+
 module Full_Adder(S_o, C_out_o, A_i, B_i, C_in_i);
 
     output  logic   S_o;

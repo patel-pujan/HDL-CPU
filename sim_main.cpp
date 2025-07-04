@@ -1,4 +1,4 @@
-#define MODULENAME Full_Adder_N
+#define MODULENAME ALU
 
 #define STRINGIFY(x) #x
 #define TOSTRING(x) STRINGIFY(x)
@@ -30,18 +30,17 @@ int main(int argc, char** argv) {
     contextp->commandArgs(argc, argv);
     module* top = new module{contextp};
     
-    top->A_i = 16;
-    top->B_i = 16;
-    top->C_in_i = 0;
-    
+    top->ALUControl_i = 3;
+    top->A_i = 0xDEADBEEFDECAFBAD;
+    top->B_i = 0xDEADBEEFDECAFBAD;
+
     top->eval();
-        
-    
-    std::cout << "[A]: " << top->A_i << std::endl;
-    std::cout << "[B]: " << top->B_i << std::endl;
-    
-    std::cout << "[S]: " << top->S_o << std::endl;
-    std::cout << "[C]: " << std::bitset<64>(top->C_out_o) << std::endl;
+
+    std::cout << "[R]: " << std::bitset<64>(top->result_o) << std::endl;
+    std::cout << "[C]: " << std::bitset<1>(top->carryout_o) << std::endl;
+    std::cout << "[O]: " << std::bitset<1>(top->overflow_o) << std::endl;
+    std::cout << "[N]: " << std::bitset<1>(top->negative_o) << std::endl;
+    std::cout << "[Z]: " << std::bitset<1>(top->zero_o) << std::endl;
 
     top->final();
     delete top;

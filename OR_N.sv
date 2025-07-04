@@ -1,23 +1,20 @@
 // N Bit OR
-module OR_N (out_o, in_i);
-    
-    parameter   GATE_WIDTH  = 64;
+`timescale 1ns/10ps
 
-    output  logic                       out_o; 
-
-    input   logic [GATE_WIDTH - 1 : 0]  in_i;
-
-    logic [GATE_WIDTH : 0]              temp;
-
+module OR_N (out_o, A_i, B_i);
     
-    assign temp[0] = 1'b0;
+    parameter   REGISTER_LENGTH                 = 64;
+
+    output  logic [REGISTER_LENGTH - 1 : 0]     out_o; 
+
+    input   logic [REGISTER_LENGTH - 1 : 0]     A_i;
+    input   logic [REGISTER_LENGTH - 1 : 0]     B_i;
     
-    assign out_o = temp[GATE_WIDTH]; 
-    
+   
     genvar i;
     generate
-        for (i = 0; i < GATE_WIDTH; i++) begin
-            or  or_i    (temp[i+1], in_i[i], temp[i]);
+        for (i = 0; i < REGISTER_LENGTH; i++) begin
+            or  or_i    (out_o[i], A_i[i], B_i[i]);
         end
     endgenerate
 

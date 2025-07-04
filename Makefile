@@ -1,6 +1,6 @@
 # Makefile for Verilator C++ simulation
 V 			:= verilator
-LINT-FLAGS 	:= --lint-only -Wall --timing
+LINT-FLAGS 	:= --lint-only -Wall --no-timing
 SIM-FLAGS 	:= --no-timing --cc --exe --build -j 0 -Wall
 TOP 		:= $(word 2, $(MAKECMDGOALS))
 V-FILE 		:= $(TOP).sv

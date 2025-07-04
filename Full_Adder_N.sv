@@ -1,7 +1,9 @@
 // N bit Adder & Subtractor
+`timescale 1ns/10ps
+
 module Full_Adder_N(S_o, C_out_o, A_i, B_i, C_in_i);
     
-    parameter   REGISTER_WIDTH              = 8;
+    parameter   REGISTER_WIDTH              = 64;
 
     output  logic [REGISTER_WIDTH - 1 : 0]  S_o;
     output  logic [REGISTER_WIDTH - 1 : 0]  C_out_o;

@@ -1,4 +1,6 @@
 // N Bit Zero Checker
+`timescale 1ns/10ps
+
 module zero_checker (flag_o, in_i);
     
     parameter   REGISTER_LENGTH     = 64;
