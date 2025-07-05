@@ -5,7 +5,7 @@ SIM-FLAGS 	:= --no-timing --cc --exe --build -j 0 -Wall
 TOP 		:= $(word 2, $(MAKECMDGOALS))
 V-FILE 		:= $(TOP).sv
 SIM-FILE 	:= sim_main.cpp
-SRC-DIR		:= -IMUXs -IDECODERs -IREGs
+SRC-DIR		:= -IMUXs -IDECODERs -IREGs -IOPs
 BUILD_DIR 	:= obj_dir
 EXECUTABLE 	:= $(BUILD_DIR)/V$(TOP)
 
