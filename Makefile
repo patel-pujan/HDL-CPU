@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Makefile for Verilator C++ simulation
 V 			:= verilator
 LINT-FLAGS 	:= --lint-only -Wall --no-timing
@@ -21,3 +22,20 @@ lint:
 
 clean:
 	rm -rf $(BUILD_DIR)
+=======
+CC := gcc
+CFLAGS := -Wall -Wextra -Werror -O0 -g
+CFILES := $(wildcard *.c)
+OBJFILES := $(CFILES:.c=.o)
+TARGET := CPU
+
+$(TARGET): $(OBJFILES)
+	$(CC) $(CFLAGS) -o $@ $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: clean
+clean:
+	rm $(OBJFILES) $(TARGET)
+>>>>>>> dc11569 (working Makefile)
