@@ -27,10 +27,10 @@ module aludemo();
 	parameter ALU_PASS_B=3'b000, ALU_ADD=3'b010, ALU_SUBTRACT=3'b011, ALU_AND=3'b100, ALU_OR=3'b101, ALU_XOR=3'b110;
 	
 
-	alu dut (.A, .B, .cntrl, .result, .negative, .zero, .overflow, .carry_out);
+	ALU dut (.result_o(result), .zero_o(zero), .overflow_o(overflow), .negative_o(negative), .carryout_o(carry_out), .ALUControl_i(cntrl), .A_i(A), .B_i(B));
 
 	// Force %t's to print in a nice format.
-	initial $timeformat(-9, 2, " ns", 10);
+//	initial $timeformat(-9, 2, " ns", 10);
 
 	integer i;
 	logic [63:0] test_val;

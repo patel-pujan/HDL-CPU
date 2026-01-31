@@ -12,7 +12,7 @@ module regdemo();
 
 	integer i;
 
-	regfile dut (.ReadData1, .ReadData2, .WriteData, .ReadRegister1, .ReadRegister2, .WriteRegister, .RegWrite, .clk);
+	RegisterFile dut (.RD1_o(ReadData1), .RD2_o(ReadData2), .RR1_i(ReadRegister1), .RR2_i(ReadRegister2), .WR_i(WriteRegister), .WD_i(WriteData), .RegWrite_i(RegWrite), .reset_i(1'b0), .clk_i(clk));
 
 	// Force %t's to print in a nice format.
 	initial $timeformat(-9, 2, " ns", 10);
