@@ -99,8 +99,9 @@ module regdemo();
 			assert((i == 0 && ReadData1 == '0) || (i != 0 && ReadData1 == (i-1)*64'h0000010204080001));
 			assert((i == 31 && ReadData2 == '0) || (i != 31 && ReadData2 == i*64'h0000010204080001));
 		end
-
-		$stop;
+        
+        $display("%t Simulation Finished.", $time);
+		$finish;
 	end
 endmodule
 

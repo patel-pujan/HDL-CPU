@@ -112,6 +112,9 @@ module aludemo();
 		A = 64'hDEADBEEFDECAFBAD; B = 64'hDEADBEEFDECAFBAD;
 		#(delay);
 		assert(result == 64'h0000000000000000 && carry_out == 1 && overflow == 0 && negative == 0 && zero == 1);
+		
+		$display("%t Simulation Finished.", $time);
+		$finish;
 	end
 endmodule
 
