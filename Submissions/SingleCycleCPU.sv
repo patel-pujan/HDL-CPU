@@ -1,19 +1,12 @@
 // Single Cycle CPU
 `timescale 1ns / 10ps
 
+import cpu_types::*;
+
 module SingleCycleCPU (
     clk_i,
     rst_i
 );
-
-  /* ---------- */
-  /* Parameters */
-  /* ---------- */
-  parameter int REGISTER_LENGTH_64 = 64;
-  parameter int REGISTER_WIDTH = 32;
-  parameter int INSTRUCTION_WIDTH = 32;
-  parameter int REGISTER_SEL = $clog2(REGISTER_WIDTH);
-  parameter int ALU_CONTROL_LENGTH = 3;
 
   /* ---------- */
   /* IO Signals */
@@ -25,39 +18,44 @@ module SingleCycleCPU (
   /* Local Signals */
   /* ------------- */
   // Program Counter
-  logic [REGISTER_LENGTH_64 - 1 : 0] PC;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] PC;
   // Instruction Memory
-  logic [REGISTER_LENGTH_64 - 1 : 0] address_im;
-  logic [ INSTRUCTION_WIDTH - 1 : 0] instruction;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] address_im;
+  logic    [ INSTRUCTION_WIDTH - 1 : 0] instruction;
   // Register File
-  logic [REGISTER_LENGTH_64 - 1 : 0] read_data_1;
-  logic [REGISTER_LENGTH_64 - 1 : 0] read_data_2;
-  logic [      REGISTER_SEL - 1 : 0] read_register_1;
-  logic [      REGISTER_SEL - 1 : 0] read_register_2;
-  logic [      REGISTER_SEL - 1 : 0] write_register;
-  logic [REGISTER_LENGTH_64 - 1 : 0] write_data_rf;
-  logic                              reg_write;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] read_data_1;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] read_data_2;
+  logic    [      REGISTER_SEL - 1 : 0] read_register_1;
+  logic    [      REGISTER_SEL - 1 : 0] read_register_2;
+  logic    [      REGISTER_SEL - 1 : 0] write_register;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] write_data_rf;
+  logic                                 reg_write;
   // ALU
-  logic [REGISTER_LENGTH_64 - 1 : 0] result;
-  logic                              zero;
-  logic                              overflow;
-  logic                              carryout;
-  logic                              negative;
-  logic [ALU_CONTROL_LENGTH - 1 : 0] alu_control;
-  logic [REGISTER_LENGTH_64 - 1 : 0] A;
-  logic [REGISTER_LENGTH_64 - 1 : 0] B;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] result;
+  logic                                 zero;
+  logic                                 overflow;
+  logic                                 carryout;
+  logic                                 negative;
+  logic    [ALU_CONTROL_LENGTH - 1 : 0] alu_control;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] A;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] B;
   // Data Memory
-  logic [REGISTER_LENGTH_64 - 1 : 0] address_dm;
-  logic                              write_enable;
-  logic                              read_enable;
-  logic [REGISTER_LENGTH_64 - 1 : 0] write_data_dm;
-  logic [REGISTER_LENGTH_64 - 1 : 0] read_data_dm;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] address_dm;
+  logic                                 write_enable;
+  logic                                 read_enable;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] write_data_dm;
+  logic    [REGISTER_LENGTH_64 - 1 : 0] read_data_dm;
+  // Control Signals
+  opcode_t                              instruction_type;
 
 
   /* ------------------- */
   /* Combinational Logic */
   /* ------------------- */
   assign address_im = PC;
+  assign read_register_1 = instruction[20:16];
+  assign read_register_2 = instruction[9:5];
+  assign write_register = instruction[4:0];
 
   /* ---------------- */
   /* Sequential Logic */
@@ -66,6 +64,11 @@ module SingleCycleCPU (
   /* -------------- */
   /* Instantiations */
   /* -------------- */
+  control control_unit (
+      .instruction_i(instruction),
+      .instruction_type_o(instruction_type)
+  );
+
   REGISTER_N program_counter (
       .q_o(PC),
       .d_i(PC + 'h4),
@@ -115,3 +118,4 @@ module SingleCycleCPU (
   );
 
 endmodule
+
