@@ -27,7 +27,12 @@ package cpu_types;
     SUBS
   } opcode_t;
 
-  typedef struct packed {logic temp;} control_t;
+  typedef struct packed {
+    logic [ALU_CONTROL_LENGTH - 1 : 0] alu_op;
+    logic B_mux;
+    logic RW_mux;
+    logic RW;
+  } control_t;
 
 endpackage
 

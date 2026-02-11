@@ -43,6 +43,10 @@ module control (
     unique case (1'b1)
       (opcode_i == 10'b1001000100): begin  // ADDI
         instruction_type_o = ADDI;
+        control_o.alu_op   = 3'b010;
+        control_o.B_mux    = 1'b0;
+        control_o.RW_mux   = 1'b0;
+        control_o.RW       = 1'b1;
       end
       (opcode_i == 11'b10101011000): begin  // ADDS
         instruction_type_o = ADDS;

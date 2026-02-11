@@ -13,12 +13,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="33.075035 us"></ZoomEndTime>
-      <Cursor1Time time="1.500000 us"></Cursor1Time>
+      <ZoomEndTime time="24.577908 us"></ZoomEndTime>
+      <Cursor1Time time="6.729986 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="310"></NameColumnWidth>
-      <ValueColumnWidth column_width="411"></ValueColumnWidth>
+      <ValueColumnWidth column_width="387"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="7" />
    <wvobject type="logic" fp_name="/SingleCycleCPU_demo/cpu/clk_i">
@@ -82,18 +82,22 @@
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/read_register_1">
             <obj_property name="ElementShortName">read_register_1[4:0]</obj_property>
             <obj_property name="ObjectShortName">read_register_1[4:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/read_data_1">
             <obj_property name="ElementShortName">read_data_1[63:0]</obj_property>
             <obj_property name="ObjectShortName">read_data_1[63:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/read_register_2">
             <obj_property name="ElementShortName">read_register_2[4:0]</obj_property>
             <obj_property name="ObjectShortName">read_register_2[4:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/read_data_2">
             <obj_property name="ElementShortName">read_data_2[63:0]</obj_property>
             <obj_property name="ObjectShortName">read_data_2[63:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject type="logic" fp_name="/SingleCycleCPU_demo/cpu/reg_write">
             <obj_property name="ElementShortName">reg_write</obj_property>
@@ -102,10 +106,12 @@
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/write_register">
             <obj_property name="ElementShortName">write_register[4:0]</obj_property>
             <obj_property name="ObjectShortName">write_register[4:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/write_data_rf">
             <obj_property name="ElementShortName">write_data_rf[63:0]</obj_property>
             <obj_property name="ObjectShortName">write_data_rf[63:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
       </wvobject>
       <wvobject type="group" fp_name="group89">
@@ -128,10 +134,12 @@
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/A">
             <obj_property name="ElementShortName">A[63:0]</obj_property>
             <obj_property name="ObjectShortName">A[63:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/B">
             <obj_property name="ElementShortName">B[63:0]</obj_property>
             <obj_property name="ObjectShortName">B[63:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/alu_control">
             <obj_property name="ElementShortName">alu_control[2:0]</obj_property>
@@ -140,6 +148,7 @@
          <wvobject type="array" fp_name="/SingleCycleCPU_demo/cpu/result">
             <obj_property name="ElementShortName">result[63:0]</obj_property>
             <obj_property name="ObjectShortName">result[63:0]</obj_property>
+            <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          </wvobject>
          <wvobject type="logic" fp_name="/SingleCycleCPU_demo/cpu/zero">
             <obj_property name="ElementShortName">zero</obj_property>
